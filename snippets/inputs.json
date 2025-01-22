@@ -1,0 +1,30 @@
+{
+    "Scanner class": {
+        "prefix": ["scan", "inp", "sc"],
+        "body": [
+            "Scanner ${1:scannerName} = new Scanner(System.in);"
+        ],
+        "description": "Create a Scanner object for user input."
+    },
+    "Read Input (int)": {
+        "prefix": ["scint"],
+        "body": [
+            "int ${1:variableName} = ${2:scannerName}.nextInt();"
+        ],
+        "description": "Read an integer using the Scanner object."
+    },
+    "Read Input (String)": {
+        "prefix": ["scstr"],
+        "body": [
+            "String ${1:variableName} = ${2:scannerName}.nextLine();"
+        ],
+        "description": "Read a string using the Scanner object."
+    },
+    "Read Input (Char)": {
+        "prefix": ["scchar"],
+        "body": [
+            "char ${1:variableName} = ${2:scannerName}.nextLine().charAt(0);"
+        ],
+        "description": "Read a character using the Scanner object."
+    }
+}

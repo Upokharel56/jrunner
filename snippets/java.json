@@ -1,0 +1,114 @@
+{
+    "Main Method": {
+        "prefix": ["main","psvm"],
+        "body": [
+            "public static void main(String[] args) {",
+            "    ${1:// your code here}",
+            "}"
+        ],
+        "description": "Generate the main method"
+    },
+    "For Loop": {
+        "prefix": "fori",
+        "body": [
+            "for (int ${1:i} = 0; ${1:i} < ${2:n}; ${1:i}++) {",
+            "    ${3:// your code here}",
+            "}"
+        ],
+        "description": "Generate a for loop"
+    },
+    "Enhanced For Loop": {
+        "prefix": ["foreach"],
+        "body": [
+            "for (${1:Type} ${2:element} : ${3:collection}) {",
+            "\t${0:// Code here}",
+            "}"
+        ],
+        "description": "Generate an enhanced for loop for iterating collections or arrays."
+    },
+    "Try-Catch Block": {
+        "prefix": ["try"],
+        "body": [
+            "try {",
+            "\t${1:// Code to try}",
+            "} catch (${2:Exception} ${3:e}) {",
+            "\t${4:// Exception handling}",
+            "}"
+        ],
+        "description": "Generate a try-catch block."
+    },
+
+    "Method Definition": {
+        "prefix": ["fun"],
+        "body": [
+            "public ${1:void} ${2:methodName}(${3:parameters}) {",
+            "\t${0:// Method body}",
+            "}"
+        ],
+        "description": "Generate a method definition."
+    },
+    "Interface Definition": {
+        "prefix": ["interface"],
+        "body": [
+            "public interface ${1:InterfaceName} {",
+            "\t${0:// Interface body}",
+            "}"
+        ],
+        "description": "Generate a public interface definition."
+    },
+    "If Statement": {
+        "prefix": ["if"],
+        "body": [
+            "if (${1:condition}) {",
+            "\t${0:// Code to execute if condition is true}",
+            "}"
+        ],
+        "description": "Generate an if statement."
+    },
+    "If-Else Statement": {
+        "prefix": ["ifelse"],
+        "body": [
+            "if (${1:condition}) {",
+            "\t${2:// Code to execute if condition is true}",
+            "} else {",
+            "\t${0:// Code to execute if condition is false}",
+            "}"
+        ],
+        "description": "Generate an if-else statement."
+    },
+    "Switch Case Statement": {
+        "prefix": ["switch"],
+        "body": [
+            "switch (${1:variable}) {",
+            "\tcase ${2:value1}:",
+            "\t\t${3:// Code for case 1}",
+            "\t\tbreak;",
+            "\tcase ${4:value2}:",
+            "\t\t${5:// Code for case 2}",
+            "\t\tbreak;",
+            "\tdefault:",
+            "\t\t${0:// Default case}",
+            "}"
+        ],
+        "description": "Generate a switch case statement."
+    },
+    "Getter Method": {
+        "prefix": ["getter"],
+        "body": [
+            "public ${1:Type} get${2:PropertyName}() {",
+            "\treturn ${3:property};",
+            "}"
+        ],
+        "description": "Generate a getter method."
+    },
+    "Setter Method": {
+        "prefix": ["setter"],
+        "body": [
+            "public void set${1:PropertyName}(${2:Type} ${3:value}) {",
+            "\tthis.${3:property} = ${3:value};",
+            "}"
+        ],
+        "description": "Generate a setter method."
+    }
+
+}

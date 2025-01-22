@@ -1,0 +1,21 @@
+{
+    "System.out.println": {
+        "prefix": ["sout","print","pln"],
+        "body": ["System.out.println(${1:message});"],
+        "description": "Print a message to the console"
+    },
+    "System.out.printf": {
+        "prefix": ["souf","print","pf"],
+        "body": ["System.out.printf(${1:message});"],
+        "description": "Print a message to the console in c like format"
+    },
+    "System.out.println": {
+        "prefix": ["sout","print","pln","prt"],
+        "body": ["System.out.println(${1:message});"],
+        "description": "Print a message to the console"
+    }
+
+
+
+    
+}
