@@ -3,6 +3,7 @@
   "displayName": "java-runner",
   "description": "Runs java code in an external terminal, provides some shorter snippets for ease",
   "version": "0.0.1",
+  "publisher": "utsav pokharel",
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -10,7 +11,8 @@
     "Other"
   ],
   "activationEvents": [
-        "onLanguage:java"
+        "onLanguage:java",
+        "onCommand:jrunner.runJava"
     ],
   "main": "./extension.js",
   "contributes": {
@@ -25,6 +27,14 @@
       {
         "command": "jrunner.runJava",
         "key": "F8",
+        "when": "editorLangId == java"
+      },      {
+        "command": "jrunner.runJava",
+        "key": "shift+F10",
+        "when": "editorLangId == java"
+      },      {
+        "command": "jrunner.runJava",
+        "key": "f7",
         "when": "editorLangId == java"
       }
     ],

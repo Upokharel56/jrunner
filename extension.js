@@ -147,6 +147,16 @@ function highlightErrorsInEditor(errors) {
 
 
 function activate(context) {
+
+	// vscode.window.createQuickPick(vscode.QuickPickItemKind.Default)
+	const runButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+    runButton.text = `$(play) Run`;  // Play icon in the status bar
+    runButton.tooltip = 'Run Java Program';
+    runButton.command = 'jrunner.runJava'; // Command to run Java program
+    runButton.show();
+
+ 
+
   const runJava = vscode.commands.registerCommand("jrunner.runJava", () => {
 	let message;
 	
@@ -247,6 +257,7 @@ function activate(context) {
     });
   });
 
+  context.subscriptions.push(runButton);
   context.subscriptions.push(runJava);
 }
 

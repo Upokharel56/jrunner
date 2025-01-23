@@ -1,65 +1,124 @@
-# jrunner README
+# JRunner - VS Code Extension for Running Java Programs
 
-This is the README for your extension "jrunner". After writing up a brief description, we recommend including the following sections.
+JRunner is a VS Code extension that simplifies the process of compiling and running Java programs directly from the editor. It provides helpful error reporting and interactive feedback, making it easier to troubleshoot issues during the development process. The extension supports **running Java files in an external terminal** and provides **syntax highlighting for compilation errors**. This extension also provides shorthand **snippets** to make it easy to type long lenghty code.
+
+## Screenshots
+
+<b style="font-size:1.5rem">Run in external terminal:</b>
+<img src="./screenShots/openInTerminal.png">
+
+<b style="font-size:1.5rem">Inline Compilation error highliting:</b>
+<img src="./screenShots/inlineErrors.png">
+
+<b style="font-size:1.5rem">Easy shotcuts and snippets:</b>
+<img src="./screenShots/snippets.png">
+
+
+
+
+## Usage
+
+- **Running Code**: **Shift+f8** or **F8** to run
+
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Run Java Programs**: Execute Java programs directly from VS Code using the `Run Java` command.
+- **Compilation Error Highlighting**: Automatically highlights errors in the editor with red background and error messages for easy identification.
+- **Interactive Terminal**: Runs Java programs in an external terminal, allowing for full output visibility and interaction.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
+- **Java**: JDK 8 or above.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Installation
 
-## Extension Settings
+1. Open VS Code.
+2. Navigate to the **Extensions** view (Ctrl+Shift+X).
+3. Search for `JRunner`.
+4. Click on the `Install` button.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Usage
 
-For example:
+### Running Java Code
+1. Open a `.java` file in the editor.
+2. Press `Ctrl+Shift+P` to open the command palette.
+3. Search for and select **Run Java**.
+4. The Java program will be compiled, and if successful, it will be executed in an external terminal.
 
-This extension contributes the following settings:
+### Error Handling
+- If there are compilation errors, they will be highlighted in the editor, and a detailed error message will appear in the output channel.
+- Errors are parsed and aggregated to handle cases where multiple errors occur on the same line.
 
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+### Configuration
 
-## Known Issues
+The extension works automatically by detecting Java files and running them in the appropriate context. However, you can customize the output channel and terminal behavior based on your OS.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- **Windows**: Opens in `cmd.exe`.
+- **macOS**: Opens in the built-in `Terminal` app.
+- **Linux**: Opens in the default terminal emulator (e.g., `gnome-terminal`).
 
-## Release Notes
+## Commands
 
-Users appreciate release notes as you update your extension.
+- **Run Java**: Executes the Java program from the currently open `.java` file.
 
-### 1.0.0
+## Error Messages
+The following error levels are displayed with color-coding for better visibility:
 
-Initial release of ...
+- **Error**: Red
+- **Success**: Green
+- **Info**: Blue
 
-### 1.0.1
+These messages appear in the output channel and are also displayed in the editor as inline decorations.
 
-Fixed issue #.
+# Snippets
 
-### 1.1.0
+## Basic usages:
 
-Added features X, Y, and Z.
+<!-- | **Snippet**             | **Expansion**                                                                                                                                               |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **pvsm,main**          | `public static void main(String[] args) {  }`                                                                                         |
+| **fori**             | `for (int i = 0; i < n; i++) { }`                                                                                                   |
+| **foreach**    | `for (Type element : collection) { }`                                                                                                    |
+| **try**      | `try {  } catch (Exception e) {  }`                                                                              |
+| **fun**    | `public void methodName(parameters) { }`                                                                                               |
+| **interface** | `public interface InterfaceName { }`                                                                                                |
+| **if**         | `if (condition) { }`                                                                                          |
+| **ifelse**    | `if (condition) {  } else {  }`                                                                |
+| **switch**| `switch (variable) { ` <br> `case value1:  break; ` <br> ` case value2:  break;  ` <br> `default:  ` <br> `}`                   |
+| **getter**        | `public Type getPropertyName() { return property; }`                                                                                                     |
+| **Setter**        | `public void setPropertyName(Type value) { this.property = value; }`                                                                                      | -->
+
+
+| **Snippets**               | **Expansion**                                                                                                 |
+|----------------------------|-------------------------------------------------------------------------------------------------------------|
+| **`main`, `psvm`**            |  → `public static void main(String[] args) { ... }`                                           |
+| **`fori`**               |  → `for (int i = 0; i < n; i++) { ... }`                                                              |
+| **`foreach`**      |  → `for (Type element : collection) { ... }`                                                      |
+| **`try`**        | → `try { ... } catch (Exception e) { ... }`                                                           |
+| **`fun`**      |  → `public void methodName(parameters) { ... }`                                                       |
+| **`interface`**   |  → `public interface InterfaceName { ... }`                                                     |
+| **`if`**           |  → `if (condition) { ... }`                                                                            |
+| **`ifelse`**      | → `if (condition) { ... } else { ... }`                                                           |
+| **`switch`**  |  → `switch (variable) { case value1: ...; break; default: ... }`                                   |
+| **`getter`**          | → `public Type getPropertyName() { return property; }`                                            |
+| **`setter`**          |  → `public void setPropertyName(Type value) { this.property = value; }`                            |
+| **`sout`, `print`, `pln`, `prt`**     |  → `System.out.println(message);`                                             |
+| **`souf`, `print`, `pf`**      |  → `System.out.printf(message);`                                                      |
+| **`scan`, `inp`, `sc`**          |  → `Scanner scannerName = new Scanner(System.in);`                                      |
+| **`scint`**       |  → `int variableName = scannerName.nextInt();`                                                      |
+| **`scstr`**    |  → `String variableName = scannerName.nextLine();`                                                  |
+| **`scchar`**      |  → `char variableName = scannerName.nextLine().charAt(0);`    
+
+
+
+
+## Feedback
+
+If you encounter any issues or have suggestions for improvement, please report in `iamgroot56u+jrunnerissue@gmail.com`
 
 ---
 
-## Working with Markdown
+<b style="font-size:1.5rem">Enjoy coding with jrunner!😊 </b>
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
