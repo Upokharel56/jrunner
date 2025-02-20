@@ -3,12 +3,19 @@
   "displayName": "java-runner",
   "description": "Runs java code in an external terminal, provides some shorter snippets for ease",
   "version": "0.0.1",
-  "publisher": "utsav pokharel",
+  "publisher": "Upokharel",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/Upokharel56/jrunner.git"
+},
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
+  ],
+  "extensionDependencies": [
+    "Oracle.oracle-java"
   ],
   "activationEvents": [
         "onLanguage:java",

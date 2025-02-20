@@ -115,7 +115,7 @@ These messages appear in the output channel and are also displayed in the editor
 
 ## Feedback
 
-If you encounter any issues or have suggestions for improvement, please report in `iamgroot56u+jrunnerissue@gmail.com`
+If you encounter any issues or have suggestions for improvement, please open an issue in [GitHub repository](https://github.com/Upokharel56/jrunner)
 
 ---
 
