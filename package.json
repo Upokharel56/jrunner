@@ -30,6 +30,21 @@
         "icon":"$(play)"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == java",
+          "command": "jrunner.runJava",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "jrunner.runJava",
+          "group": "navigation"
+        }
+      ]
+    },
     "keybindings": [
       {
         "command": "jrunner.runJava",

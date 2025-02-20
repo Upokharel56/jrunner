@@ -33,6 +33,51 @@ function output_color(message,color){
 }
 
 
+function pre_check( editor){
+    const document = editor.document;
+
+	if (document && document.isDirty){
+		document.save();
+	}
+
+
+    if (document.languageId !== "java") {
+		message = "This command is for Java files only!"
+		output_color(message,"red")
+      vscode.window.showErrorMessage(message);
+      
+      throw new Error("This command is for Java files only!");
+    }
+
+    const filePath = document.fileName;
+	const className = path.basename(filePath, ".java");
+
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) {
+		message = "No workspace folder is open."
+		output_color(message,"red")
+      vscode.window.showErrorMessage(message);
+      throw new Error("No workspace folder is open.");
+    }
+
+    const projectRoot = workspaceFolders[0].uri.fsPath;
+
+	// Ensure .output directory exists
+	let outputDir = path.join(projectRoot, ".output");
+
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    return {filePath, className, outputDir, document};
+
+
+
+}
+
+
+
+
 
 function activate(context) {
 
@@ -43,7 +88,7 @@ function activate(context) {
     runButton.command = 'jrunner.runJava'; // Command to run Java program
     runButton.show();
 
- 
+    
 
   const runJava = vscode.commands.registerCommand("jrunner.runJava", () => {
 	let message;
@@ -58,47 +103,16 @@ function activate(context) {
       return;
     }
 
-    const document = editor.document;
+    let filePath, className, outputDir, document;
+    try{
 
-	if (document && document.isDirty){
-		document.save();
-	}
-
-
-    if (document.languageId !== "java") {
-		message = "This command is for Java files only!"
-		output_color(message,"red")
-      vscode.window.showErrorMessage(message);
-      return;
+         ({filePath, className, outputDir, document} = pre_check(editor));
+    }catch(error){
+        output_color(error.message,"red")
+        return;
     }
 
-    const filePath = document.fileName;
-	const className = path.basename(filePath, ".java");
 
-    const workspaceFolders = vscode.workspace.workspaceFolders;
-    if (!workspaceFolders) {
-		message = "No workspace folder is open."
-		output_color(message,"red")
-      vscode.window.showErrorMessage(message);
-      return;
-    }
-
-    const projectRoot = workspaceFolders[0].uri.fsPath;
-
-	// Ensure .output directory exists
-	let outputDir = path.join(projectRoot, ".output");
-
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
-
-    // Compile the Java file into .output
-    
-    // const tconst targetClassDir = path.dirname(path.join((path.Dir, relativeFilePath));
-    // if (!fs.existsSync(targetClassDir)) {join(outputDir, relativeFilePath));
-    // if (!fs.existsSync(targetClassDir)) {
-    //   fs.mkdirSync(targetClassDir, { recursive: true });
-    // }
 
     const compileCommand = `javac -d "${outputDir}" "${filePath}"`;
 	output_color(`Java command geenerated : ${compileCommand} \n\n`,"green")
@@ -119,9 +133,7 @@ function activate(context) {
 
 	 output_color(`Compiled: ${filePath} -> ${outputDir} \n Running: ${className}.java \n`,"blue")
 
-	// Determine the class name (package path)
-	
-      // Run the compiled class
+
       const runCommand = `java -cp "${outputDir}" "${className}"`;
 
 
