@@ -1,4 +1,17 @@
 {
+    
+        "Base Class": {
+          "prefix": ["!","snip","bcla"],
+          "body": [
+            "public class ${TM_FILENAME_BASE} {", 
+            "   public static void main(String[] args) {",
+            "        ${1:// your code here}",
+            "   }",
+            "}"
+          ],
+          "description": "Create class with filename"
+        },
+      
     "Main Method": {
         "prefix": ["main","psvm"],
         "body": [

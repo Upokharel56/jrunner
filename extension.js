@@ -137,13 +137,6 @@ function activate(context) {
       const runCommand = `java -cp "${outputDir}" "${className}"`;
 
 
-	  console.log(`Generated information : \n 
-		Filename : ${document.fileName}, 
-		classNamee : ${className},
-		compilleCommand: ${compileCommand}, 
-		runCommand: ${runCommand}
-		`)
-		
 		run_in_external_terminal(runCommand)
 
     });
